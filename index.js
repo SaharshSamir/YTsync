@@ -46,9 +46,9 @@ var pauseButton = $('#pauseButton');
         }
     })
 
-    socket.on('serverPlayerCount', count) {
-        people.innerHTML = count;s
-    }
+    socket.on('serverPlayerCount', function(count) {
+        people.innerHTML = count;
+    }) 
 
 
 
