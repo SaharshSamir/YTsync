@@ -36,8 +36,11 @@ io.on('connection', function (socket) {
 
     socket.on('clientPlayerConnected', () =>  {
         count++;
-        console.log(count);
         io.sockets.emit('serverPlayerCount',count);
+    })
+
+    socket.on('clientMyVideo', (data) => {
+     io.sockets.emit('serverMyVideo', data);
     })
     
 })
