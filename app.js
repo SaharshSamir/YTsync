@@ -29,12 +29,20 @@ io.on("connection", function (socket) {
     io.sockets.emit("ServerEvent", { data });
   });
 
-  socket.on("clientPlayerConnected", () => {
-    count++;
-    io.sockets.emit("serverPlayerCount", count);
+  socket.on("clientPlayerConnected", async () => {
+    let clientIds = [];
+    await io.sockets.clients((err, clients) => {
+      console.log(clients);
+      clientIds = clients;
+    });
+    io.sockets.emit("serverPlayerCount", clientIds.length);
   });
 
   socket.on("clientMyVideo", (data) => {
     io.sockets.emit("serverMyVideo", data);
   });
+});
+
+io.on("disconnect", function (socket) {
+  console.log("disconnectd");
 });

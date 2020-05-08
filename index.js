@@ -39,13 +39,14 @@ socket.on("serverStateEvent", function (data) {
 });
 
 function newPlayer() {
-  people.innerHTML = counter;
+  $("#count").text(counter);
 }
 
 //Server gives us new count of players
 socket.on("serverPlayerCount", function (count) {
-  console.log("count is " + count);
+  //   console.log(count);
   counter = count;
+  $("#count").text(counter);
 });
 
 function timelineLoop() {
