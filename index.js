@@ -1,5 +1,5 @@
 //Make connection
-var socket = io.connect(`http://localhost:8080`);
+var socket = io.connect(window.origin);
 var people = $("#count");
 var playButton = $("#playButton");
 var pauseButton = $("#pauseButton");
